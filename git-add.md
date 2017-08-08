@@ -33,19 +33,29 @@ The 'git add' command updates this index of new or modified files.
 ## Examples
 
 - find details about untracked files and files currently in the staging area:
+
 `git status`
 
 - add a particular file
+
 `git add example-file.txt`
 
 - add all files of a particular type in the current directory
+
 `git add *.txt`
 
 - add all changed files in a directory and all sub-directories
+
 `git add .`
 
 - add an ignored file
+
 `git add -f ignored-file.txt`
 
+- remove all staged files
+
+`git reset`
+
 - remove an individual file from the staging area
+
 `git reset -HEAD remove-me.txt`
