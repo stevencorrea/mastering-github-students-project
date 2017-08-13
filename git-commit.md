@@ -32,16 +32,16 @@ The terminal will then output
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 ```
-**```master```** stands for the branch on which the commit has been done.
-**```6a683b1```** are the first 7 characters for the hash(a 40 character name used to uniquely identify a commit).
-**```<commit message>```** stands for your unique commit message
-Thereafter, the number of files, together with the changes performed on each are listed.
+**```master```** stands for the branch on which the commit has been done.  
+**```6a683b1```** are the first 7 characters for the hash(a 40 character name used to uniquely identify a commit).  
+**```<commit message>```** stands for your unique commit message.  
+Thereafter, the number of files, together with the changes performed on each are listed.  
 
-```git commit --file=<file>``` - performs a commit while getting the commit message from the file <file>.
+```git commit --file=<file>``` - performs a commit while getting the commit message from the file ```<file>```.
 
-```git commit --author=<author>``` - performs a commit while overriding the commit author with <author>.
+```git commit --author=<author>``` - performs a commit while overriding the commit author with ```<author>```.
 
-```git commit --date=<date>``` - performs a commit while overriding the author date with <date>.
+```git commit --date=<date>``` - performs a commit while overriding the author date with ```<date>```.
 
 ```git commit [--file=<file>| -m <msg> ]``` - performs a commit while allowing you to edit the messages taken from the various sources e.g. file, commit message.
 
