@@ -45,5 +45,19 @@ Thereafter, the number of files, together with the changes performed on each are
 
 ```git commit [--file=<file>| -m <msg> ]``` - performs a commit while allowing you to edit the messages taken from the various sources e.g. file, commit message.
 
--edit 
-### Options
+```git commit -q -m "commit message"``` - the ```-q``` or ```--quiet``` flag performs a commit while suppressing the commit summary message.
+
+```git commit --dry-run -m "commit message"``` - the ```dry-run``` option doesn't perform the commit but allows you to see what would happen if a real commit was done. It will show you the files that will be commited and the ones that will not. The files that will not be committed are the modified files and the untracked files. The modified files are the ones that had been added to the staging area before changes were made to them. The untracked files are the ones that have never been added to the staging area.
+
+```bash
+
+touch file1 file2 file3
+git add .
+git commit file1
+
+```
+This will only commit file1 while leaving the other changes eg. file2 and file3 in the staging area. Thus, it allows you to commit only certain changes from the staging area.
+
+```git commit``` - is preferred to commiting using the ```-m``` option. This is because it allows you to write your commit in the default editor that is started. Thus it gives you the opportunity to write better commits which would be more meaningful to you later especially when you find yourself in a fix and would really want to know the exact changes you made in each commit. Usually, it is preferred to write a small summary of about 50 characters or less. Thereafter, you skip one line then list all the changes that are taking place in that commit. The commit is performed when you save and close the editor.
+
+Checkout the [manual](https://git-scm.com/docs/git-commit) for a full list of options and flags.
