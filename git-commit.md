@@ -12,13 +12,13 @@ A commit is the mechanism used to mark a specific point as a point of reference.
 
 ### Ways of specifying the content to be added to a commit
 
-```git add new-file``` - adds new file to the staging area
+1. ```git add new-file``` - adds new file to the staging area
 
-```git add modified-file``` - adds modified file to the staging area
+1. ```git add modified-file``` - adds modified file to the staging area
 
-```git rm file-to-be-removed``` - removes file from the local directory and staging area.
+1. ```git rm file-to-be-removed``` - removes file from the local directory and staging area.
 
-```git commit -a``` - automatically adds changes from the modified files to the staging area and also remove files from the staging area that have been removed from the local directory.
+1. ```git commit -a``` - automatically adds changes from the modified files to the staging area and also remove files from the staging area that have been removed from the local directory.
 
 ## Usage
 
