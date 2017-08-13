@@ -20,7 +20,7 @@ A commit is the mechanism used to mark a specific point as a point of reference.
 
 ```git commit -a``` - automatically adds changes from the modified files to the staging area and also remove files from the staging area that have been removed from the local directory.
 
-### Usage
+## Usage
 
 ```git commit -m "commit message"``` - performs a commit with the value in quotes as the commit message. You should edit it to be meaningful to you.
 
