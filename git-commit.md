@@ -43,7 +43,7 @@ Thereafter, the number of files, together with the changes performed on each are
 
 ```git commit --date=<date>``` - performs a commit while overriding the author date with ```<date>```.
 
-```git commit [--file=<file>| -m <msg> ]``` - performs a commit while allowing you to edit the messages taken from the various sources e.g. file, commit message.
+```git commit [--file=<file>| -m <msg> ]``` - performs a commit while allowing you to edit the messages taken from the various sources e.g. file ```<file>```, commit message ```<msg>```.
 
 ```git commit -q -m "commit message"``` - the ```-q``` or ```--quiet``` flag performs a commit while suppressing the commit summary message.
 
