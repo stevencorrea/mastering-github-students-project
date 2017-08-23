@@ -2,9 +2,13 @@
 
 ## Overview
 
-The `git add` command is used to prepare files to be added to the Git repository. 
+The `git add` command is used to mark which file changes in a Git repository need to be recorded permanently. 
+A Git repo has a local database that stores all recorded changes made to the files within the repo.
+The `git add` command is the first stage in permanently recording any file changes to this database.
 
 ## Description
+
+
 
 When a file has been added or changed, the process of updating the repository is as follows:
 
