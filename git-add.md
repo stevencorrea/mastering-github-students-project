@@ -67,9 +67,17 @@ Further details on the `git reset` command can be found here: [git reset documen
 
 `git add .`
 
+- To add all new or modified files in the Git repo to staging:
+
+`git add [-A-|-all]`
+
 - To force an a specific ignored file to be added to the staging area:
 
 `git add -f <filename>`
 
+More complicated options that can be used with the `git add` command can be found in the [Git documentation](https://git-scm.com/docs/git-add)
+
 
 ## Links to more specific details about how Git tracks and stores file changes
+
+The [Git documentation site](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain) contains a detailed chapter on how Git manages to keep track of changed files and add them to the database)
