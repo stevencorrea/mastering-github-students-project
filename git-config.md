@@ -48,6 +48,18 @@ git config user.<press TAB twice>
 # user.email        user.name         user.signingkey 
 ```
 
+### Removing configuration values
+
+When you mistype a configuration name or value, you'll want to remove it's register inside your ```.gitconfig``` file. In order to do that you need to use the ```--unset``` directive.
+
+```bash
+# Let's add a wrong configuration
+git config user.age 25
+
+# To remove user.age use --exclude
+git config --exclude user.age
+```
+
 ## What ```git config``` really does inside your OS?
 
 ```git config``` is a command that store your configurations across the ```.gitconfig``` files located in your OS.
@@ -93,73 +105,61 @@ For more information please take a look on how these configurations are interrel
 
 ## Most common git configurations you may take advantage of.
 
-### User
-
 ### Colors
-**Visual example**
+
+You can configure your git console colors very precisely using predefined colors or hexadecimal color values.
+
+#### Color definition process
+
+When configuring a color you need first to enable color configuration. There are six main color areas you can configure with ```true``` or ```false```.:
+
+* ```color.branch```: Colors referent your git branch
+* ```color.decorate```: ```git log --decorate``` output colors.
+* ```color.diff```: Colors of diff presentations.
+* ```color.grep```: Output colors of ```git grep``` command.
+* ```color.interactive```: Colors of ```--interactive``` directive.
+* ```color.status```: Colors used when showing your git repository status. ```git status```
+
+When you set any of these areas as ```true```, you'll be able to configure their color <slots>.
+
+For instance ```color.status```, have the following slots of color to change:
+
+* color.status.added       
+* color.status.changed     
+* color.status.header      
+* color.status.nobranch    
+* color.status.untracked   
+* color.status.updated
+
+
+Let's say you want your modified files listed on ```git status -s``` to be shown in magenta, you need to do the following:
+
+```bash
+# 1 - Make sure you have your color.status marked as true, this will enable you to configure all git status slots colors
+git config color.status true
+
+# 2 - Now you're able to change the color slot of modified files to magenta.
+git config color.status.changed magenta
+```
+
+It works the same configuring other color areas.
+
+#### Default color list
+
+The predefined git colors are listed below.
+
+* normal
+* black
+* red
+* green
+* yellow
+* blue
+* magenta
+* cyan
+* white
 
 ### Editor
-
-### Aliases
-#### Complex command aliases
-
-**User friendly git log** https://coderwall.com/p/euwpig/a-better-git-log
-
-
-
-
-
-
-
----
-
-## Why should you use .gitconfig?
-
-Using .gitconfig enables you to configure your git to meet your preferences of colors/workflow/personal data.
-
-Let's see some examples of what you're capable of using git config command.
-
-First things first.
-
-```git config``` is a command that writes inside your .gitconfig files, you will want use this command to avoid mistyping errors inside the `.gitconfig` file.
-
-**When you have a fresh git installation in your machine, your `.gitconfig` file will probably be empty.**
-
-```bash
-cat ~/.gitconfig 
-
-#Output: (EMPTY FILE)
-```
-
-### Setting your user name and email.
-
-**Now, let's add your user email and name to your `.gitconfig` file.**
-
-```bash
-# git config theorical basic syntax
-# git config <--directives-you-want-to-use> <option.suboption> <value>
-
-git config --global user.email  "your@mail.com"
-git config --global user.name  "Your Name"
-```
-**PS:.** *```--global``` directive will be explained in the sections below with more detail, for the moment you need to understand that ```--global``` relates to the git configuration of your OS user.*
-
-
-**Look what ```git config``` did to your gitconfig file:**
-```bash
-cat ~/.gitconfig 
-
-#Output:
-#[user]
-#     email = your@mail.com
-#     name = Your Name
-```
-
-Now git knows the basic information needed when logging your actions within your repositories.
-
-### Setting your prefered text editor to vim
-
-Sometimes when using git, it opens an text editor inside the terminal. 
+Sometimes when using git, it opens an text editor.
 
 If the text editor is not of your preference you can say to git which one you want to use with the option ```core.editor```
 
@@ -168,46 +168,58 @@ If the text editor is not of your preference you can say to git which one you wa
 git config --global core.editor vim
 ```
 
-### There is a better way to debug ```gitconfig``` files instead using ```cat``` ?
+### Aliases
 
-If you want to see what configurations are in place without having to read the entire configuration file you may use: 
+Aliases are great to reduce your daily efforts using git command line.
+
+Using git aliases you can create shortcuts from simple to complex commands that will save you lots of typing energy.
+
+#### Simple command alias example
+
+If you want to shorten your ```git commit``` command to ```git ci```.
+
 ```bash
-## You may use git config <option> without assigning value
-git config user.name #Let's say you want to know your user.name
+# git config alias.<alias_name> <command being shortened>
+git config --global alias.ci commit
 
-#OUTPUT:
-# Your Name
+# Using the alias
+git ci
 ```
 
-```<option>``` accepts TAB AUTOCOMPLETE. This is great when you don't know what options are availabe to you!
+**PS:.** ```--global``` directive is advised to use, because normally aliases are going to be integrated inside your daily workflow to all projects.
+
+#### Complex command aliases
+
+Shortening git commit to git ci, may not look like something of great improvement.
+To show you the aliases power, I'm going to explain this article [User friendly git log](https://coderwall.com/p/euwpig/a-better-git-log) which creates an alias for a beautiful ```git log``` command.
+
+The normal ```git log``` command.
+
+![Normal git log](http://i.imgur.com/XgZxY5r.jpg)
+
+The extended ```git log``` command.
+
+
+![Improved git log](https://i.imgur.com/hPpuHu9.jpg)
+
 ```bash
-git config user.<press TAB twice>
+# This git log command shows the <commit hash> - <branch> - <commit message> - <elapsed time> <commiter name>
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
-#OUTPUT:
-# user.email        user.name         user.signingkey 
+# Now let's encapsulate this inside a git lg alias
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bo
+ld blue)<%an>%Creset' --abbrev-commit"
+
+# Using the alias
+git lg
+
+# Using the alias showing the diff code.
+git lg -p
+
+# Using the alias showing the last two commits.
+git lg 2
+
 ```
-
-
-
-
-## A brief explanation on WHY to use ```--global```.
-
-The thing is... there are more ```.gitconfig``` files around your OS than the file located in your home folder ```~/.gitconfig```.
-
-Each of these files corresponds to a hierarquic level of configuration.
-
-If you write 
-
-| Level | Directive |Location (Unix OS) | Importance |
-|---|---|---|---|
-|Entire OS| --system  | /etc/gitconfig | Using ```git config --system``` you'll be setting a configuration to the whole OS. all OS users will be affected.  |
-|Your OS User   | --global  | ~/.gitconfig   | Using ```git config --global``` the configuration scope will be only for the current logged user. Everything you configure here will override the ```--system``` conf.  |
-|Local git repository   | --local (Or none, this is default)  | <Whatever your git repository is placed>  | Using ```git config --global``` the configuration scope will be only for the current repository. Everything you configure here will override the ```--system``` and ```--global```  conf. |
----
-
-I really hope this content can be of help showing how important is to configure your git avoiding misconceptions that may make you lose precious time of life.
-
-
 
 Guilherme Soldateli
 
