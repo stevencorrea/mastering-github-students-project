@@ -1,7 +1,6 @@
 # ```git config```
-```git config``` is of great help during your daily life as a developer.
-
-Configuring your git to meet your (or your team) preferences may save many precious hours of work.
+```git config``` purpose is to configure your git installation in order to confortably save your (or your team) precious time
+.
 
 During this article some examples will be shown and hopefully you'll be able to configure your git to fit your best preferences.
 
@@ -27,7 +26,7 @@ git config --global user.name  "Your Name"
 
 
 ### Retrieving configuration values
-Now let's understand how to retrieve the configuration you've done in the example above.
+To retrieve the configuration you've done in the example above do the following.
 
 You just have to use ```git config <option>``` without assigning any value to retrieve the value.
 
@@ -56,8 +55,8 @@ When you mistype a configuration name or value, you'll want to remove it's regis
 # Let's add a wrong configuration
 git config user.age 25
 
-# To remove user.age use --exclude
-git config --exclude user.age
+# To remove user.age use --unset
+git config --unset user.age
 ```
 
 ## What ```git config``` really does inside your OS?
@@ -92,7 +91,7 @@ Each of these files corresponds to a hierarquic level of configuration.
 
 * ```/etc/gitconfig``` : Configuration relative to the whole OS (All OS users).
 * ```~/.gitconfig``` : Configuration relative to your OS user (Unix based OS)
-* ```your_project_directory``` : Configuration relative only inside the folder of your cloned repository.
+* ```your_project_directory/.git/config``` : Configuration relative to a specific git repository.
 
 For more information please take a look on how these configurations are interrelated.
 
@@ -100,7 +99,7 @@ For more information please take a look on how these configurations are interrel
 |---|---|---|---|
 |Entire OS| --system  | /etc/gitconfig | Using ```git config --system``` you'll be setting a configuration to the whole OS. all OS users will be affected.  |
 |Your OS User   | --global  | ~/.gitconfig   | Using ```git config --global``` the configuration scope will be only for the current logged user. Everything you configure here will override the ```--system``` conf.  |
-|Local git repository   | --local (Or none, this is default)  | <Whatever your git repository is placed>  | Using ```git config --global``` the configuration scope will be only for the current repository. Everything you configure here will override the ```--system``` and ```--global```  conf. |
+|Local git repository   | --local (Or none, this is default)  | your_project_directory/.git/config  | Using ```git config --local``` the configuration scope will be only for the current repository. Everything you configure here will override the ```--system``` and ```--global```  conf. |
 
 
 ## Most common git configurations you may take advantage of.
@@ -120,7 +119,7 @@ When configuring a color you need first to enable color configuration. There are
 * ```color.interactive```: Colors of ```--interactive``` directive.
 * ```color.status```: Colors used when showing your git repository status. ```git status```
 
-When you set any of these areas as ```true```, you'll be able to configure their color <slots>.
+When you set any of these areas as ```true```, you'll be able to configure their colors (slots).
 
 For instance ```color.status```, have the following slots of color to change:
 
@@ -186,7 +185,7 @@ git config --global alias.ci commit
 git ci
 ```
 
-**PS:.** ```--global``` directive is advised to use, because normally aliases are going to be integrated inside your daily workflow to all projects.
+**PS:.** ```--global``` directive is advised to use, because normally aliases are going to be integrated inside your daily workflow.
 
 #### Complex command aliases
 
@@ -221,8 +220,24 @@ git lg 2
 
 ```
 
+# Summary
+
+The briefly explanation in this article may be enough to 
+help you saving time configuring an git environment that is confortable and productive to you.
+
+Topics we covered so far:
+
+* Configuration values.
+* ```.gitconfig``` file architecture.
+* Color configuration
+* Text editor configuration
+* The power within git aliases.
+
+
+In case you want to learn more about ```git config```, check its **[Manual Page](https://git-scm.com/docs/git-config)**.
+
 Guilherme Soldateli
 
-08/24/2017
+09/03/2017
 
 Career Path 3: Modern Frontend Developer
