@@ -6,7 +6,7 @@ The git revert command undoes a commit, to do that without removing the commit f
 
 Let’s imagine that you delete some old files without use, then you commit and push to the master repository, after that you receive a call asking to restore these files because they were important, then you go crazy.
 There is no need to panic, git revert <commit> is here to salve you.
-* for the git revert command, you will need the commit hash e.g., fe896093b75b6bdbe8b228fa48d44ab19f839bc1 you can find the commit hash on github in the tab commit, or using the command line git log.
+* for  the git revert command, you will need the commit hash e.g., fe896093b75b6bdbe8b228fa48d44ab19f839bc1 you can find the commit hash on github in the tab commit, or using the command line git log.
 
 * after use git revert, git will remove the changes made by the commit and apply the result in a new commit.
 
