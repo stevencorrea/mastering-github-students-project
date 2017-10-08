@@ -2,10 +2,10 @@ __________________
 # ```Git Revert```
 ____________
 
-The git revert command undoes a commit, to do that without removing the commit from the project history, it create a new commit without the changes made by the selected commit.
+The git revert command will undo a commit, to do that without removing the commit from the project history, it create a new commit without the changes made by the selected commit.
 
-Let’s imagine that you delete some old files without use, then you commit and push to the master repository, after that you receive a call asking to restore these files because they were important, then you go crazy.
-There is no need to panic, git revert <commit> is here to salve you.
+Imagine that you delete some old files, commit and push to the master repository, but then, the company need the files again.
+There is no need to panic, git revert is here to salve you.
 * for  the git revert command, you will need the commit hash e.g., fe896093b75b6bdbe8b228fa48d44ab19f839bc1 you can find the commit hash on github in the tab commit, or using the command line git log.
 
 * after use git revert, git will remove the changes made by the commit and apply the result in a new commit.
@@ -13,7 +13,7 @@ There is no need to panic, git revert <commit> is here to salve you.
 _________________
 ## ```When use git revert```
 _______________
-The best scenario to use revert, is when you need to delete all changes made by a commit, this facilitates in case of a bug caused by the commit and do a manually fix will take a long time.
+The best scenario to use revert, is when you need to delete all changes made by a commit e.g. bad commits contain bugs.
 ### ```Example```
 
 |command | Descrption|
@@ -23,7 +23,7 @@ The best scenario to use revert, is when you need to delete all changes made by 
 |	git push origin master|update the changes to origin master repository|
 |	git revert (commit)|revert the last commit|
 
-Generate a new commit that undoes all of the changes introduced in *commit*, then apply it to the current branch.
+Generate a new commit that will undo all of the changes introduced in *commit*, then apply it to the current branch.
 ___________
 ## ```Advanced list of git revert examples```
 _______________
