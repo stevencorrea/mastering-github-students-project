@@ -2,9 +2,9 @@
 
 ### The `git stash` command allows you to temporarily save or "stash" changes you've made in your project so you can apply them later.
 
-#### This is handy if you need to work on something on a different branch, but aren't ready to commit.
+**This is useful when you need to work on a different branch, but aren't ready to commit.**
 
-Git stash takes your uncommitted changes, saves them - then reverts your project to a clean working copy (from your last commit) - meaning no local changes.
+Git stash takes your uncommitted changes, saves them - then reverts your project to a clean working copy (from your last commit), meaning no local changes.
 
 A stash is just for your own personal use, so you can't push a stash to a remote repository.
 
@@ -12,7 +12,7 @@ After performing a `stash` you're able to use any other git features such as cha
 
 Because you're able to have multiple stashes - it's a good idea to annotate them just like you would a message to your commits.
 
-You can do that with" `git stash save "helpful message"`
+You can do that with `git stash save "helpful message"`
 
 This is a good practice because you'll be able to easily identify what each stash contains.
 
@@ -34,9 +34,13 @@ Passing the `-u` option will include untracked changes in your stash.
 
 To include everything, including ignored files, pass the `-a` (--all) option.
 
-`git stash` = tracked files
-`git stash -u` = tracked and untracked
-`git stash -a` = tracked, untracked and ignored
+For quick reference:
+
+* `git stash` will include tracked files.
+
+* `git stash -u` = will include tracked and untracked files.
+
+* `git stash -a` = will include tracked, untracked and ignored files.
 
 To delete a stash do `git stash drop stash@{1}` and to delete all of your stashes do `git stash clear`
 
