@@ -153,6 +153,28 @@ There are a few options you can use to tweak the output of your diff. Here are a
 
 <br />  
 
+## Easier on the Eyes: `git difftool`  
+Diffs can become large and difficult to look through, especially in the terminal window's sparse environment. We have another option that can be run from the command line, called `git difftool`. This opens your `diff` in a GUI window. If you'd like to try it out, go to your repo's directory and run `$ git difftool`. If this is your first time using `difftool`, you will be presented with the following message:
+
+>This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+opendiff kompare emerge vimdiff
+
+>Viewing (1/1): 'git-diff'
+Launch 'opendiff' [Y/n]? 
+
+Answer `Y` to proceed. 
+
+|Note: Macs may present an error message at this point if Xcode is not installed:|
+|--------------------------------------------------------------------------------|
+| `xcode-select: error: tool 'opendiff' requires Xcode, but active developer directory` `'/Library/Developer/CommandLineTools' is a command line tools instance` |  
+|This can be fixed by downloading xCode on Mac's App Store, then installing it (it's free). You can then re-run `$ git difftool` and enter `Y`.|  
+
+The `diff` will open in a separate GUI window, which for many people is easier to look at than text in the terminal window. More detail on `git difftool` can be found [here](https://git-scm.com/docs/git-difftool).
+
+<br />
+
 <hr />  
  
 Whether comparing works in progress to stage, stage to master, or commit to commit, Git's `diff` command is a powerful tool for version control. You can use it to find potential bugs, guide you in regression testing, or just to remind yourself what you've changed before committing code changes. Be sure to check out the [Git Manual](https://git-scm.com/doc) for more info on `diff` and Git's other commands.  
